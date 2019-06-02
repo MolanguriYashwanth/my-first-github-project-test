@@ -21,6 +21,19 @@ function joinRoom(roomName){
         })
         msgUl.scrollTo(0,msgUl.scrollHeight);
     })
+
+    let searchBox = document.querySelector('#search-box');
+    searchBox.addEventListener('input',(e)=>{
+        let messages = Array.from(document.getElementsByClassName('message-text'));
+        messages.forEach((msg)=>{
+            if(msg.innerText.toLowerCase().indexOf(e.target.value.toLowerCase())===-1){
+                msg.style.display = "none";
+            }else{
+                msg.style.display = "block";
+            }
+            });
+    })
+ 
 }
 function buildHTML(fullMsg){
     let convertedDate = new Date(fullMsg.time).toLocaleString();

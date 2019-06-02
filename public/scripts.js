@@ -1,5 +1,10 @@
 
-const socket = io('http://localhost:8080');
+const username = prompt('Whats your name?');
+const socket = io('http://localhost:8080',{
+    query :{
+        username
+    }
+});
 let nsSocket = '';
 
 // const socket3 = io('http://localhost:8080/mozilla');
@@ -20,6 +25,8 @@ socket.on('namespaces',(nsData)=>{
     Array.from(namespacesDiv.getElementsByClassName('namespace')).forEach((element)=>{
         element.addEventListener('click',(e)=>{
                 let elementAtr = element.getAttribute('ns');
+                joinNs(elementAtr);
+
         })
     })
     joinNs('/wiki');
